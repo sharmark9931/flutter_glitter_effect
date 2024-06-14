@@ -2,7 +2,7 @@
 
 A Flutter package for creating customizable glitter effects, perfect for adding interactive and visually appealing animations to your Flutter applications. Glitter will apply to your gesture.
 
-![Flutter Glitter Effect Demo](https://github.com/sharmark9931/flutter_glitter_effect/blob/main/flutter_glitter_effect.png)
+![Flutter Glitter Effect Demo](https://raw.githubusercontent.com/sharmark9931/flutter_glitter_effect/main/flutter_glitter_effect.gif)
 
 ## Features
 
