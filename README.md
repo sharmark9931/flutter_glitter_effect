@@ -72,6 +72,5 @@ onInteraction: Callback function invoked on user interaction.
 ```
 
 ### Notes:
-- See the video here: (https://github.com/sharmark9931/flutter_glitter_effect/blob/main/flutter_glitter_effect.mp4)
 
 This comprehensive `README.md` document covers installation instructions, usage examples, API details, additional information, and licensing for your `flutter_glitter_effect` package. This package is licenced under MIT licence.
