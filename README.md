@@ -2,7 +2,7 @@
 
 A Flutter package for creating customizable glitter effects, perfect for adding interactive and visually appealing animations to your Flutter applications. Glitter will apply to your gesture.
 
-![Flutter Glitter Effect Demo](https://github.com/sharmark9931/flutter_glitter_effect/blob/main/flutter_glitter_effect.png)
+![Flutter Glitter Effect Demo](https://raw.githubusercontent.com/sharmark9931/flutter_glitter_effect/main/flutter_glitter_effect.gif)
 
 ## Features
 
@@ -15,13 +15,16 @@ A Flutter package for creating customizable glitter effects, perfect for adding 
 ## Getting Started
 
 ### Installation
-
 To use this package, add `flutter_glitter_effect` as a dependency in your `pubspec.yaml` file:
-
 ```yaml
 dependencies:
   flutter_glitter_effect: ^0.0.1  # Replace with the latest version
 ```
+Or run
+```bash
+  flutter pub add flutter_glitter_effect
+```
+
 Then, run the following command to install:
 ```bash
  flutter pub get
@@ -68,10 +71,8 @@ particleShape: Shape of particles (circle, square, triangle).
 applyGravity: Whether to apply gravity to particles.
 initialBurst: Number of particles emitted on initial user interaction.
 trailLength: Length of particle trail.
-onInteraction: Callback function invoked on user interaction.
 ```
 
 ### Notes:
-- See the video here: (https://github.com/sharmark9931/flutter_glitter_effect/blob/main/flutter_glitter_effect.mp4)
 
 This comprehensive `README.md` document covers installation instructions, usage examples, API details, additional information, and licensing for your `flutter_glitter_effect` package. This package is licenced under MIT licence.
