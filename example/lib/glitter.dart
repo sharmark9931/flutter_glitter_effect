@@ -47,7 +47,9 @@ class Glitter {
     if (shape == ParticleShape.circle) {
       canvas.drawCircle(Offset(x, y), size, paint);
     } else if (shape == ParticleShape.square) {
-      canvas.drawRect(Rect.fromCenter(center: Offset(x, y), width: size, height: size), paint);
+      canvas.drawRect(
+          Rect.fromCenter(center: Offset(x, y), width: size, height: size),
+          paint);
     } else if (shape == ParticleShape.triangle) {
       final path = Path()
         ..moveTo(x, y - size)
@@ -57,7 +59,9 @@ class Glitter {
       canvas.drawPath(path, paint);
     } else if (shape == ParticleShape.all) {
       canvas.drawCircle(Offset(x, y), size, paint);
-      canvas.drawRect(Rect.fromCenter(center: Offset(x, y), width: size, height: size), paint);
+      canvas.drawRect(
+          Rect.fromCenter(center: Offset(x, y), width: size, height: size),
+          paint);
       final path = Path()
         ..moveTo(x, y - size)
         ..lineTo(x - size, y + size)

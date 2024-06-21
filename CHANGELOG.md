@@ -1,3 +1,9 @@
+## 1.0.2
+
+* Added outerBoxBorderWidth and outerBoxColor as a parameter.
+* Added child as a widget parameter.
+* Modified example code.
+
 ## 1.0.1
 
 * Updated the README file.

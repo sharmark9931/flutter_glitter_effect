@@ -10,8 +10,8 @@ import 'particle_shape.dart';
 class GlitterScreen extends StatefulWidget {
   final int numberOfParticles;
   final double speedOfParticles;
-  final double width;
-  final double height;
+  final double? width;
+  final double? height;
   final List<Color> particleColors;
   final bool isRandomColor;
   final ParticleShape particleShape;
@@ -19,13 +19,16 @@ class GlitterScreen extends StatefulWidget {
   final bool applyGravity;
   final int initialBurst;
   final int trailLength;
+  final Color outerBoxColor;
+  final double outerBoxBorderWidth;
+  final Widget? child;
 
   const GlitterScreen({
     super.key,
     this.numberOfParticles = 5,
     this.speedOfParticles = 3.0,
-    this.width = double.infinity,
-    this.height = double.infinity,
+    this.width,
+    this.height,
     this.particleColors = const [Colors.red, Colors.green, Colors.blue],
     this.isRandomColor = true,
     this.particleShape = ParticleShape.circle,
@@ -33,8 +36,14 @@ class GlitterScreen extends StatefulWidget {
     this.applyGravity = false,
     this.initialBurst = 10,
     this.trailLength = 5,
+    this.outerBoxColor = Colors.red,
+    this.outerBoxBorderWidth = 1,
+    this.child,
   })  : assert(numberOfParticles <= 10, 'numberOfParticles must not exceed 10'),
-        assert(speedOfParticles <= 20.0, 'speedOfParticles must not exceed 20.0');
+        assert(
+            speedOfParticles <= 20.0, 'speedOfParticles must not exceed 20.0'),
+        assert(outerBoxBorderWidth <= 10.0,
+            'outerBoxBorderWidth must not exceed 10.0');
 
   @override
   State<GlitterScreen> createState() => _GlitterScreenState();
@@ -65,6 +74,10 @@ class _GlitterScreenState extends State<GlitterScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // Determine default width and height based on device size
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       body: GestureDetector(
         onPanUpdate: (details) {
@@ -81,9 +94,24 @@ class _GlitterScreenState extends State<GlitterScreen> {
             createInitialBurst(x, y);
           });
         },
-        child: CustomPaint(
-          painter: GlitterPainter(glitters, widget.particleShape),
-          size: Size(widget.width, widget.height),
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: widget.outerBoxColor,
+              width: widget.outerBoxBorderWidth,
+              style: BorderStyle.solid,
+            ),
+          ),
+          child: Stack(
+            children: [
+              if (widget.child != null) widget.child!,
+              CustomPaint(
+                painter: GlitterPainter(glitters, widget.particleShape),
+                size: Size(
+                    widget.width ?? screenWidth, widget.height ?? screenHeight),
+              ),
+            ],
+          ),
         ),
       ),
     );

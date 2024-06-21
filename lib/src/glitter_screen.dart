@@ -22,10 +22,10 @@ class GlitterScreen extends StatefulWidget {
   final double speedOfParticles;
 
   /// Width of the CustomPaint widget.
-  final double width;
+  final double? width;
 
   /// Height of the CustomPaint widget.
-  final double height;
+  final double? height;
 
   /// List of colors for particles.
   final List<Color> particleColors;
@@ -48,13 +48,22 @@ class GlitterScreen extends StatefulWidget {
   /// Length of particle trail.
   final int trailLength;
 
+  /// Color of the outer screen/container border
+  final Color outerBoxColor;
+
+  /// Width of the outer screen/container border
+  final double outerBoxBorderWidth;
+
+  /// Child widget to be displayed behind the particles.
+  final Widget? child;
+
   /// Constructor with default parameter values.
   const GlitterScreen({
     super.key,
     this.numberOfParticles = 5,
     this.speedOfParticles = 3.0,
-    this.width = double.infinity,
-    this.height = double.infinity,
+    this.width,
+    this.height,
     this.particleColors = const [Colors.red, Colors.green, Colors.blue],
     this.isRandomColor = true,
     this.particleShape = ParticleShape.circle,
@@ -62,9 +71,14 @@ class GlitterScreen extends StatefulWidget {
     this.applyGravity = false,
     this.initialBurst = 10,
     this.trailLength = 5,
+    this.outerBoxColor = Colors.red,
+    this.outerBoxBorderWidth = 1,
+    this.child,
   })  : assert(numberOfParticles <= 10, 'numberOfParticles must not exceed 10'),
         assert(
-            speedOfParticles <= 20.0, 'speedOfParticles must not exceed 20.0');
+            speedOfParticles <= 20.0, 'speedOfParticles must not exceed 20.0'),
+        assert(outerBoxBorderWidth <= 10.0,
+            'outerBoxBorderWidth must not exceed 10.0');
 
   @override
   State<GlitterScreen> createState() => _GlitterScreenState();
@@ -107,6 +121,10 @@ class _GlitterScreenState extends State<GlitterScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // Determine default width and height based on device size
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       body: GestureDetector(
         /// Gesture detector to track user interactions for emitting particles.
@@ -136,13 +154,28 @@ class _GlitterScreenState extends State<GlitterScreen> {
             /// Emit initial burst of particles on touch start.
           });
         },
-        child: CustomPaint(
-          painter: GlitterPainter(glitters, widget.particleShape),
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: widget.outerBoxColor,
+              width: widget.outerBoxBorderWidth,
+              style: BorderStyle.solid,
+            ),
+          ),
+          child: Stack(
+            children: [
+              if (widget.child != null) widget.child!,
+              CustomPaint(
+                painter: GlitterPainter(glitters, widget.particleShape),
 
-          /// Painter for rendering particles.
-          size: Size(widget.width, widget.height),
+                /// Painter for rendering particles.
+                size: Size(
+                    widget.width ?? screenWidth, widget.height ?? screenHeight),
 
-          /// Size of the CustomPaint widget.
+                /// Size of the CustomPaint widget.
+              ),
+            ],
+          ),
         ),
       ),
     );
