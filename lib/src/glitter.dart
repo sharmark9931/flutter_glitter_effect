@@ -1,4 +1,5 @@
 import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 import '../flutter_glitter_effect.dart';
@@ -96,7 +97,9 @@ class Glitter {
 
       /// Draw a circle at current position with the specified size.
     } else if (shape == ParticleShape.square) {
-      canvas.drawRect(Rect.fromCenter(center: Offset(x, y), width: size, height: size), paint);
+      canvas.drawRect(
+          Rect.fromCenter(center: Offset(x, y), width: size, height: size),
+          paint);
 
       /// Draw a square at current position with the specified size.
     } else if (shape == ParticleShape.triangle) {
@@ -114,7 +117,9 @@ class Glitter {
       canvas.drawCircle(Offset(x, y), size, paint);
 
       /// Draw a circle.
-      canvas.drawRect(Rect.fromCenter(center: Offset(x, y), width: size, height: size), paint);
+      canvas.drawRect(
+          Rect.fromCenter(center: Offset(x, y), width: size, height: size),
+          paint);
 
       /// Draw a square.
       final path = Path()

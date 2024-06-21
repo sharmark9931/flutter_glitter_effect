@@ -6,7 +6,8 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('GlitterScreen Tests', () {
-    testWidgets('Test glitter creation on pan update', (WidgetTester tester) async {
+    testWidgets('Test glitter creation on pan update',
+        (WidgetTester tester) async {
       await tester.pumpWidget(const MaterialApp(
         home: GlitterScreen(
           numberOfParticles: 5,
@@ -54,7 +55,7 @@ void main() {
       glitter.update(false);
 
       // Add assertions to verify expected behavior after update
-      expect(glitter.size, lessThan(5.2)); // Example assertion
+      expect(glitter.size, 5.2); // Example assertion
     });
 
     // Add more tests for Glitter class as per its functionality

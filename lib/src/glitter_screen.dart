@@ -63,7 +63,8 @@ class GlitterScreen extends StatefulWidget {
     this.initialBurst = 10,
     this.trailLength = 5,
   })  : assert(numberOfParticles <= 10, 'numberOfParticles must not exceed 10'),
-        assert(speedOfParticles <= 20.0, 'speedOfParticles must not exceed 20.0');
+        assert(
+            speedOfParticles <= 20.0, 'speedOfParticles must not exceed 20.0');
 
   @override
   State<GlitterScreen> createState() => _GlitterScreenState();
