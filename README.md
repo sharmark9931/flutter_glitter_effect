@@ -15,16 +15,14 @@ A Flutter package for creating customizable glitter effects, perfect for adding 
 ## Getting Started
 
 ### Installation
+
+To use this package, add `flutter_glitter_effect` as a dependency in your `pubspec.yaml` file:
+
 To use this package, add `flutter_glitter_effect` as a dependency in your `pubspec.yaml` file:
 ```yaml
 dependencies:
   flutter_glitter_effect: ^0.0.1  # Replace with the latest version
 ```
-Or run
-```bash
-  flutter pub add flutter_glitter_effect
-```
-
 Then, run the following command to install:
 ```bash
  flutter pub get
