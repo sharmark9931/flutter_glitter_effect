@@ -1,3 +1,6 @@
+## 1.0.3
+- Updated the minimum dart sdk version to 3.0.0 in pubspec.yaml.
+
 ## 1.0.2
 
 * Added outerBoxBorderWidth and outerBoxColor as a parameter.
